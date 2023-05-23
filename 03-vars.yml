@@ -37,7 +37,7 @@
   vars:
     URL_PLAY: play.example.com
   roles:
-    -sample
+    - sample
 ## Sample for the register variable
 #- name: Demo on Register variables
 #  hosts: all
