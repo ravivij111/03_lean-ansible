@@ -1,0 +1,49 @@
+#In Ansible, variable will be accesed using {}
+#Ansible supports double and single quotes, however quotes are not mandatory in all cases
+#Quotes are mandatory if value starts with a variable, meaning
+#msg: "" URL }} <- This requires quoting
+# msg: URL - {{ URL }} <- Thos does not require
+- name: Demo on Play Level Variables
+  hosts: all
+  vars:
+    URL: play.example.com
+  tasks:
+   - name: Print URL
+     ansible.builtin.debug:
+       msg: URL - {{URL}}
+#Only the below task have that variable, other tasks cannot access it
+- name: Demo on Task Level Variables
+  hosts: all
+  tasks:
+    - name: Print URL
+      ansible.builtin.debug:
+        msg: URL - {{URL}}
+      vars:
+        URL: tasks.example.com
+# Load Variable from a file, Note: It does not support task level
+- name: Load variable from file
+  hosts: all
+  vars_files:
+    - exvars.yml
+  tasks:
+    - name: Print URL
+      ansible.builtin.debug:
+       msg: URL - {{URL}}
+# Variables from roles
+
+- name: variable from roles
+  hosts: all
+  vars:
+    URL_PLAY: play.example.com
+  roles:
+    -sample
+# Sample for the register variable
+- name: Demo on Register variables
+  hosts: all
+  tasks:
+    - name: Run uptime shell command
+      ansible.builtin.shell: uptime
+      register: output
+    - name: print output
+      ansible.builtiin.debug:
+      msg: '{{ output.stdout }}'
