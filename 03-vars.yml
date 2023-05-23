@@ -1,4 +1,4 @@
-#In Ansible, variable will be accesed using {}
+#In Ansible, variable will be accessed using {}
 #Ansible supports double and single quotes, however quotes are not mandatory in all cases
 #Quotes are mandatory if value starts with a variable, meaning
 #msg: "" URL }} <- This requires quoting
@@ -45,5 +45,5 @@
       ansible.builtin.shell: uptime
       register: output
     - name: print output
-      ansible.builtiin.debug:
+      ansible.builtin.debug:
       msg: '{{ output.stdout }}'
