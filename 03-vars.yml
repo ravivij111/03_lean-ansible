@@ -3,6 +3,8 @@
 #Quotes are mandatory if value starts with a variable, meaning
 #msg: "" URL }} <- This requires quoting
 # msg: URL - {{ URL }} <- Thos does not require
+-
+# All the tasks of the play book can access the play level variables
 - name: Demo on Play Level Variables
   hosts: all
   vars:
@@ -30,13 +32,12 @@
       ansible.builtin.debug:
        msg: URL - {{URL}}
 ## Variables from roles
-#
-#- name: variable from roles
-#  hosts: all
-#  vars:
-#    URL_PLAY: play.example.com
-#  roles:
-#    -sample
+- name: variable from roles
+  hosts: all
+  vars:
+    URL_PLAY: play.example.com
+  roles:
+    -sample
 ## Sample for the register variable
 #- name: Demo on Register variables
 #  hosts: all
