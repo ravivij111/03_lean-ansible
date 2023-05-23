@@ -48,5 +48,5 @@
     - name: print output
       ansible.builtin.debug:
         msg: '{{ output.stdout }}'
-
+      #msg: '{{ output.stdout }}'
 # If we pass the URL as a variable from the Command Line the it replaces all above values. Its the most powerful one
