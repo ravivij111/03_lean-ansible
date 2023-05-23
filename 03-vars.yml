@@ -12,23 +12,23 @@
      ansible.builtin.debug:
        msg: URL - {{URL}}
 ##Only the below task have that variable, other tasks cannot access it
-#- name: Demo on Task Level Variables
-#  hosts: all
-#  tasks:
-#    - name: Print URL
-#      ansible.builtin.debug:
-#        msg: URL - {{URL}}
-#      vars:
-#        URL: tasks.example.com
+- name: Demo on Task Level Variables
+  hosts: all
+  tasks:
+    - name: Print URL
+      ansible.builtin.debug:
+        msg: URL - {{URL}}
+      vars:
+        URL: tasks.example.com
 ## Load Variable from a file, Note: It does not support task level
-#- name: Load variable from file
-#  hosts: all
-#  vars_files:
-#    - exvars.yml
-#  tasks:
-#    - name: Print URL
-#      ansible.builtin.debug:
-#       msg: URL - {{URL}}
+- name: Load variable from file
+  hosts: all
+  vars_files:
+    - exvars.yml
+  tasks:
+    - name: Print URL
+      ansible.builtin.debug:
+       msg: URL - {{URL}}
 ## Variables from roles
 #
 #- name: variable from roles
