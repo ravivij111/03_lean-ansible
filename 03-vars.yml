@@ -3,7 +3,7 @@
 #Quotes are mandatory if value starts with a variable, meaning
 #msg: "" URL }} <- This requires quoting
 # msg: URL - {{ URL }} <- Thos does not require
--
+
 # All the tasks of the play book can access the play level variables
 - name: Demo on Play Level Variables
   hosts: all
